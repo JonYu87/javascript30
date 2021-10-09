@@ -78,17 +78,17 @@
     </style>
 
     <script>
-      const inputs = document.querySelectorAll('.controls input');
+      const inputs = document.querySelectorAll('.controls input'); //select class controls input
 
-      function handleUpdate() {
-        const suffix = this.dataset.sizing || '';
+      function handleUpdate() { //function to handle update, updates our css styles
+        const suffix = this.dataset.sizing || ''; //this.dataset will find everything that has data- on it
 
-        document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
+        document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix) //will update our CSS variables upon events
 
 
       }
 
-      inputs.forEach(input => input.addEventListener('change', handleUpdate));
+      inputs.forEach(input => input.addEventListener('change', handleUpdate)); //event listeners for user inputs
       inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
 
 
