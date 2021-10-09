@@ -33,7 +33,17 @@
 
     <style>
       /* CSS Variables will go here  */
-      
+      :root {
+        --base: #ffc600;
+        --spacing: 10px;
+        --blur: 10px;
+      }
+
+      /* Use of variables here */
+      img {
+        padding: var(--base);
+      }
+
       body {
         text-align: center;
       }
