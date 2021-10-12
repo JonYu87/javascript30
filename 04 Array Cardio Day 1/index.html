@@ -70,16 +70,45 @@
       //Array.prototype.map()
       // Give an array of the inventors first and last names
 
-      const fullNames = inventors.map(inventor => `${inventor.first} ${inventor.last}`)
+      const fullNames = inventors.map(
+        (inventor) => `${inventor.first} ${inventor.last}`
+      );
       console.log(fullNames);
 
       //Array.prototype.sort()
       //Sort the inventors by birtdate, oldest to youngest
 
-      const birthList = inventors.sort((a, b) => a.year > b.year ? 1 : -1)
+      const birthList = inventors.sort((a, b) => (a.year > b.year ? 1 : -1));
       console.table(birthList);
 
+      //Array.prototype.reduce()
+      // 4. How many years did all inventors live?
 
+      const totalYears = inventors.reduce((total, inventor) => {
+        return total + (inventor.passed - inventor.year);
+      }, 0);
+      console.log(totalYears);
+
+      //5 Sort inventors by years lived
+      const oldest = inventors.sort((a, b) => {
+        const lastGuy = a.passed - a.year;
+        const nextGuy = b.passed - b.year;
+        return lastGuy > nextGuy ? 1 : -1;
+      });
+      console.table(oldest);
+
+      //6 create a list of Boulevards in Paris that contain 'de' anywhere in the name
+      // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+
+      const category = document.querySelector(".mw-category");
+      const links = [...category.querySelectorAll("a")]; //have to change into array before we can use because this would return a nodelist
+      const de = links
+        .map((link) => link.textContent)
+        .filter((streetName) => streetName.includes("de"));
+
+      //7 sort Excercise
+
+      
     </script>
   </body>
 </html>
