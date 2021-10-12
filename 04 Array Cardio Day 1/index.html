@@ -100,15 +100,21 @@
       //6 create a list of Boulevards in Paris that contain 'de' anywhere in the name
       // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
-      const category = document.querySelector(".mw-category");
-      const links = [...category.querySelectorAll("a")]; //have to change into array before we can use because this would return a nodelist
-      const de = links
-        .map((link) => link.textContent)
-        .filter((streetName) => streetName.includes("de"));
+      // const category = document.querySelector(".mw-category");
+      // const links = [...category.querySelectorAll("a")]; //have to change into array before we can use because this would return a nodelist
+      // const de = links
+      //   .map((link) => link.textContent)
+      //   .filter((streetName) => streetName.includes("de"));
 
       //7 sort Excercise
+      const alpha = people.sort((lastOne, nextOne) => {
+        const [aLast, aFirst] = lastOne.split(', '); //array decontruction to get first and last name
+        const [bLast, bFirst] = nextOne.split(', '); //array decontruction to get first and last name
+        return aLast > bLast ? 1 : -1;
+      });
+      console.table(alpha);
 
-      
+
     </script>
   </body>
 </html>
