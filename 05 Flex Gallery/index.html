@@ -63,7 +63,19 @@
       width: 100%;
       transition: transform 0.5s;
       border: 1px solid red;
+      flex: 1 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
+
+    /* transform will move the first and last p tag off screen respectively */
+    /* adding a class of open active will toggle it on and off */
+    .panel > *:first-child { transform: translateY(-100%);}
+    .panel.open-active > *:first-child { transform: translateY(-100%);}
+    
+    .panel > *:last-child { transform: translateY(100%);}
+    .panel.open-active > *:last-child { transform: translateY(100%);}
 
     .panel p {
       text-transform: uppercase;
@@ -78,6 +90,8 @@
 
     .panel.open {
       font-size: 40px;
+      flex: 5;
+      /* when panel has the class open the panel will take up more space due to flex 5 */
     }
 
   </style>
