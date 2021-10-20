@@ -16,6 +16,7 @@
       ctx.strokeStyle = "#BADA55";
       ctx.lineJoin = "round";
       ctx.lineCap = "round";
+      ctx.lineWidth = 100;
 
       let isDrawing = false;
       //last X and Y are where you start and end your line
@@ -42,14 +43,15 @@
         //destructure array to handle lastX and lastY not restarting at 0
         [lastX, lastY] = [e.offsetX, e.offsetY];
 
-        hue ++;
+        hue++;
         //conditional to reset hue
         if (hue >= 360) hue = 0;
 
         if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
-          direction = !direction
+          direction = !direction;
         }
 
+        direction ? ctx.lineWidth++ : ctx.lineWidth--;
       }
 
       //add event listener for mouse move
