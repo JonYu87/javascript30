@@ -13,9 +13,9 @@
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       //determine stroke style and color
-      ctx.strokeStyle = '#BADA55'
-      ctx.lineJoin = 'round';
-      ctx.lineCap = 'round';
+      ctx.strokeStyle = "#BADA55";
+      ctx.lineJoin = "round";
+      ctx.lineCap = "round";
 
       let isDrawing = false;
       //last X and Y are where you start and end your line
@@ -26,19 +26,30 @@
 
       function draw(e) {
         //conditional to stop fn from running when not moused down;
-        if(!isDrawing) return;
-        console.log(e)
+        if (!isDrawing) return;
+        console.log(e);
+        //start drawing
+        ctx.beginPath();
+        //where it begins
+        ctx.moveTo(lastX, lastY);
+        //where line ends offset comes from the event
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+        //destructure array to handle lastX and lastY not restarting at 0
+        [lastX, lastY] = [e.offsetX, e.offsetY];
       }
 
       //add event listener for mouse move
-      canvas.addEventListener('mousemove', draw);
+      canvas.addEventListener("mousemove", draw);
       //add event listener for mouse down, sets drawing to true
-      canvas.addEventListener('mousedown', () => isDrawing = true);
+      canvas.addEventListener("mousedown", (e) => {
+        isDrawing = true;
+        //update last X and last Y
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+      });
       //even listener for mouse up/mouse out, sets drawing to false. Stops drawing
-      canvas.addEventListener('mouseup', () => isDrawing = false);
-      canvas.addEventListener('mouseout', () => isDrawing = false);
-
-
+      canvas.addEventListener("mouseup", () => (isDrawing = false));
+      canvas.addEventListener("mouseout", () => (isDrawing = false));
     </script>
 
     <style>
