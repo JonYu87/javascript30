@@ -21,6 +21,8 @@
       //last X and Y are where you start and end your line
       let lastX = 0;
       let lastY = 0;
+      let hue = 0;
+      let direction = true;
 
       //create draw function to handle when we move our mouse on the canvas
 
@@ -28,6 +30,8 @@
         //conditional to stop fn from running when not moused down;
         if (!isDrawing) return;
         console.log(e);
+        ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+        // ctx.lineWidth = 6
         //start drawing
         ctx.beginPath();
         //where it begins
@@ -37,6 +41,15 @@
         ctx.stroke();
         //destructure array to handle lastX and lastY not restarting at 0
         [lastX, lastY] = [e.offsetX, e.offsetY];
+
+        hue ++;
+        //conditional to reset hue
+        if (hue >= 360) hue = 0;
+
+        if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
+          direction = !direction
+        }
+
       }
 
       //add event listener for mouse move
