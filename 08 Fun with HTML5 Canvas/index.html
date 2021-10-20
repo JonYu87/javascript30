@@ -18,6 +18,25 @@
       ctx.lineCap = 'round';
 
       let isDrawing = false;
+      //last X and Y are where you start and end your line
+      let lastX = 0;
+      let lastY = 0;
+
+      //create draw function to handle when we move our mouse on the canvas
+
+      function draw(e) {
+        //conditional to stop fn from running when not moused down;
+        if(!isDrawing) return;
+        console.log(e)
+      }
+
+      //add event listener for mouse move
+      canvas.addEventListener('mousemove', draw);
+      //add event listener for mouse down, sets drawing to true
+      canvas.addEventListener('mousedown', () => isDrawing = true);
+      //even listener for mouse up/mouse out, sets drawing to false. Stops drawing
+      canvas.addEventListener('mouseup', () => isDrawing = false);
+      canvas.addEventListener('mouseout', () => isDrawing = false);
 
 
     </script>
