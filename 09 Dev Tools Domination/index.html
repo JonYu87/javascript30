@@ -26,15 +26,27 @@
     
 
     // Styled
-    
+    console.log(`%c I am ${name}`, 'font-size:50px; background:blue')
+    //%c allows you to style can be combined with interpolation!
+
 
     // warning!
+    console.warn('Oh hecc');
+    //gives the line where you want warning to happen
 
     // Error :|
+    console.error('Beep Boop error!')
+
 
     // Info
+    console.info('Coding is hard but fun!')
 
     // Testing
+    //console.assert -- will fire when boolean false
+    const p = document.querySelector('p');
+
+    console.assert(p.classList.contains('haha it does not contain this!'), 'Mind bend')
+
 
     // clearing
 
